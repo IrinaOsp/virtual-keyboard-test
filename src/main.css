@@ -17,6 +17,9 @@ body {
 .textarea {
     display: block;
     max-width: 900px;
+    -moz-tab-size : 4;
+    -o-tab-size : 4;
+    tab-size : 4;
 }
 .keyboard {
     margin: 0 auto;
