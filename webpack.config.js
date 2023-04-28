@@ -22,7 +22,7 @@ module.exports = {
     }),
     new MiniCssExtractPlugin({
       filename: 'main.[contenthash].css',
-    })
+    }),
   ],
   module: {
     rules: [
@@ -33,29 +33,29 @@ module.exports = {
       {
         test: /\.css$/i,
         use: [
-                devMode ? "style-loader" : MiniCssExtractPlugin.loader,
-                "css-loader"
+          devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+          'css-loader',
+        ],
+      },
+      {
+        test: /\.otf$/,
+        type: 'asset/resource',
+        generator: {
+          filename: 'fonts/[name][ext]',
+        },
+      },
+      {
+        test: /\.(?:js|mjs|cjs)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              ['@babel/preset-env', { targets: 'defaults' }],
             ],
           },
-        {
-            test: /\.otf$/,
-            type: 'asset/resource',
-            generator: {
-                filename: 'fonts/[name][ext]',
-            },
         },
-        {
-            test: /\.(?:js|mjs|cjs)$/,
-            exclude: /node_modules/,
-            use: {
-              loader: 'babel-loader',
-              options: {
-                presets: [
-                  ['@babel/preset-env', { targets: 'defaults' }]
-                ]
-              }
-            }
-        }
-    ]
-  }
+      },
+    ],
+  },
 };
