@@ -86,7 +86,8 @@ body {
 .key_enter {
     width: 97.5px;
 }
-.key_shift {
+.key_shift-r,
+.key_shift-l {
     width: 127.5px;
 }
 .key_space {
