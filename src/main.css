@@ -1,3 +1,108 @@
 body {
-    font-family: 'Helvetica';
+    font-family: "Helvetica";
+}
+.wrapper {
+    margin: 20px auto;
+}
+.wrapper_input {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.label {
+    display: block;
+    font: normal 1em/3.2 "Helvetica";
+}
+.textarea {
+    display: block;
+    max-width: 900px;
+}
+.keyboard {
+    margin: 0 auto;
+    border: 1px solid slategray;
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 900px;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.092) 0%, rgba(53, 53, 53, 0.2) 82.29%), #353535;
+}
+.row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    margin-top: 5px;
+}
+.key {
+    width: 55px;
+    height: 55px;
+    background-color: #E2DBCA;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.56) 0%,
+    rgba(255, 255, 255, 0) 51.1%,
+    rgba(255, 255, 255, 0.14) 100%);
+    box-shadow: inset -1px 0px 10px rgba(0, 0, 0, 0.6);
+    border-radius: 5.66929px;
+    text-align: center;
+    font: normal 1em/3.2 "Helvetica";
+}
+.key:hover {
+    background-color: rgba(221, 221, 221, 0.7)
+}
+.key:active {
+    background-color: #5DCDE3;
+}
+.key_service {
+    background-color: #A7D0DB;
+    font-size: 0.7em;
+    line-height: 4;
+}
+.key_backspace {
+    width: 80px;
+}
+.key_tab {
+    width: 80px;
+}
+.key_caps {
+    width: 97.5px;
+    position: relative;
+}
+.key_caps::after {
+    content: "";
+    top: 10px;
+    right: 10px;
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 50%;
+}
+.key_caps_active::after {
+    background-color: #08ff08;
+}
+.key_enter {
+    width: 97.5px;
+}
+.key_shift {
+    width: 127.5px;
+}
+.key_space {
+    width: 380px;
+    color: transparent;
+}
+.key_reserve {
+    display: flex;
+    flex-direction: column;
+}
+.key_up {
+    height: 25px;
+    line-height: 0.8;
+    margin-bottom: 4px;
+}
+.key_down {
+    height: 25px;
+    line-height: 0.8;
+}
+.info {
+    text-align: center;
+    font: normal 0.8em/3.2 "Helvetica";
 }
