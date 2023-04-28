@@ -65,12 +65,16 @@ export const getRows = function getKeys(keys) {
       key.classList.add('key_service');
     } else if (el === '⇐') {
       key.classList.add('key_left');
+      key.classList.add('key_service');
     } else if (el === '⇒') {
       key.classList.add('key_right');
+      key.classList.add('key_service');
     } else if (el === '⇑') {
       key.classList.add('key_up');
+      key.classList.add('key_service');
     } else if (el === '⇓') {
       key.classList.add('key_down');
+      key.classList.add('key_service');
     } else {
       key.classList.add(`key_${el}`);
       if (el.length > 1) {
