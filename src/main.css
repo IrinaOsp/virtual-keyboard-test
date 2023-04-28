@@ -51,13 +51,14 @@ body {
 .key:hover {
     background-color: rgba(221, 221, 221, 0.7)
 }
-.key:active {
-    background-color: #5DCDE3;
-}
 .key_service {
     background-color: #A7D0DB;
     font-size: 0.7em;
     line-height: 4;
+}
+.key:active,
+.active {
+    background-color: #5DCDE3;
 }
 .key_backspace {
     width: 80px;
