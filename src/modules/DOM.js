@@ -175,14 +175,12 @@ getRows(KEYS_EN);
 
 export const keyArr = document.querySelectorAll('.key');
 
-// for (let symb in keyMap) {
-    keyArr.forEach(key => {
-        if (keyMap[key.textContent]) {
-            key.dataset.code = keyMap[key.textContent];
-            let index = key.textContent.indexOf('-');
-                if (index !== -1) {
-                    key.textContent = key.textContent.slice(0, index);
-                }
-        }
-    })
-// };
+keyArr.forEach(key => {
+    if (keyMap[key.textContent]) {
+      key.dataset.code = keyMap[key.textContent];
+        let index = key.textContent.indexOf('-');
+          if (index !== -1 && key.textContent.length > 1) {
+            key.textContent = key.textContent.slice(0, index);
+      }
+    }
+});
