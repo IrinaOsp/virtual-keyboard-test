@@ -5,10 +5,12 @@ export const textArea = document.querySelector('.textarea');
 let cursorPosition = textArea.selectionStart;
 
 const keyboardArea = document.querySelector('.keyboard');
-keyboardArea.addEventListener("mousedown", function(event) {
+
+keyboardArea.addEventListener('mousedown', event => {
   if (event.target !== textArea) {
     event.preventDefault();
     textArea.focus();
+    //moves coursor after clicks on virtual buttons
     textArea.selectionStart = cursorPosition - 1;
     textArea.selectionEnd = cursorPosition - 1;
   }
@@ -18,21 +20,20 @@ export function clicksHandler() {
   keyArr.forEach(key => {
     key.addEventListener('mousedown', (event) => {
       if (!key.classList.contains('key_service')) {
-        textArea.textContent += key.textContent;
+        textArea.value += key.textContent;
       } else {
         switch (key.textContent) {
           case 'space':
-            textArea.textContent += ' ';
+            textArea.value += ' ';
             break;
           case 'backspace':
-            textArea.textContent = textArea.textContent.substring(0, textArea.textContent.length-1);
+            textArea.value = textArea.value.substring(0, textArea.value.length-1);
             break;
           case 'tab':
-            event.preventDefault();
-            textArea.innerHTML += '\t';
+            textArea.value += '\t';
             break;
           case 'enter':
-            textArea.innerHTML += '\n';
+            textArea.value += '\n';
             break;
           case 'shift':
             console.log('shift');

@@ -1,6 +1,6 @@
 import { keyArr } from './DOM.js';
 
-let notServiceKeys = [];
+export const notServiceKeys = [];
 keyArr.forEach(key => {
   if (!key.classList.contains('key_service')) {
     notServiceKeys.push(key);

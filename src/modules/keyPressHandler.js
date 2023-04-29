@@ -9,9 +9,9 @@ export const keyDown = document.addEventListener('keydown', (event) => {
   if (virtualKey) {
     virtualKey.classList.add('active');
   }
-  if (virtualKey.classList.contains('key_caps')) {
-    // capsHandler();
-  }
+  // if (event.shiftKey && event.key === 'ShiftRight') {
+    
+  // }
 });
 
 export const keyUp = document.addEventListener('keyup', (event) => {
