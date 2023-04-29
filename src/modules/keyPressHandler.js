@@ -1,11 +1,16 @@
-import { keyArr } from './clicksHandler.js';
+// import { keyArr } from './clicksHandler.js';
+// import { capsHandler } from './CapsLock.js';
 
 export const keyDown = document.addEventListener('keydown', (event) => {
   const keyCode = event.code;
 
   const virtualKey = document.querySelector(`.key[data-code="${keyCode}"]`);
+  console.log(virtualKey)
   if (virtualKey) {
     virtualKey.classList.add('active');
+  }
+  if (virtualKey.classList.contains('key_caps')) {
+    // capsHandler();
   }
 });
 
