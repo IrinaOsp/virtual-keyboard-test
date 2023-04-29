@@ -2,9 +2,75 @@ export const KEYS_EN = [
   '`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'backspace',
   'tab', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']', '\\',
   'caps lock', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', "'", 'enter',
-  'shift', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/', 'shift',
-  'ctrl', 'win', 'alt', 'space', 'alt', 'ctrl', '⇐', '⇑', '⇓', '⇒',
+  'shift-l', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/', 'shift-r',
+  'ctrl-l', 'win', 'alt-l', 'space', 'alt-r', 'ctrl-r', '⇐', '⇑', '⇓', '⇒',
 ];
+
+const keyMap = {
+    'a': 'KeyA',
+    'b': 'KeyB',
+    'c': 'KeyC',
+    'd': 'KeyD',
+    'e': 'KeyE',
+    'f': 'KeyF',
+    'g': 'KeyG',
+    'h': 'KeyH',
+    'i': 'KeyI',
+    'j': 'KeyJ',
+    'k': 'KeyK',
+    'l': 'KeyL',
+    'm': 'KeyM',
+    'n': 'KeyN',
+    'o': 'KeyO',
+    'p': 'KeyP',
+    'q': 'KeyQ',
+    'r': 'KeyR',
+    's': 'KeyS',
+    't': 'KeyT',
+    'u': 'KeyU',
+    'v': 'KeyV',
+    'w': 'KeyW',
+    'x': 'KeyX',
+    'y': 'KeyY',
+    'z': 'KeyZ',
+    '0': 'Digit0',
+    '1': 'Digit1',
+    '2': 'Digit2',
+    '3': 'Digit3',
+    '4': 'Digit4',
+    '5': 'Digit5',
+    '6': 'Digit6',
+    '7': 'Digit7',
+    '8': 'Digit8',
+    '9': 'Digit9',
+    'space': 'Space',
+    '`': 'Backquote',
+    'tab': 'Tab',
+    'enter': 'Enter',
+    'shift-l': 'ShiftLeft',
+    'shift-r': 'ShiftRight',
+    'ctrl-l': 'ControlLeft',
+    'ctrl-r': 'ControlRight',
+    'alt-l': 'AltLeft',
+    'alt-r': 'AltRight',
+    'caps lock': 'CapsLock',
+    'win': 'MetaLeft',
+    '⇑': 'ArrowUp',
+    '⇓': 'ArrowDown',
+    '⇐': 'ArrowLeft',
+    '⇒': 'ArrowRight',
+    'backspace': 'Backspace',
+    '-': 'Minus',
+    '=': 'Equal',
+    '[': 'BracketLeft',
+    ']': 'BracketRight',
+    ';': 'Semicolon',
+    '\'': 'Quote',
+    '\\': 'Backslash',
+    ',': 'Comma',
+    '.': 'Period',
+    '/': 'Slash'
+  };
 
 let TEXTAREA = null;
 
@@ -82,6 +148,7 @@ export const getRows = function getKeys(keys) {
       }
     }
     key.textContent = el;
+
     if (index < 14) {
       document.querySelector('.row_0').appendChild(key);
     } else if (index < 28) {
@@ -105,3 +172,17 @@ export const getRows = function getKeys(keys) {
   });
 };
 getRows(KEYS_EN);
+
+export const keyArr = document.querySelectorAll('.key');
+
+// for (let symb in keyMap) {
+    keyArr.forEach(key => {
+        if (keyMap[key.textContent]) {
+            key.dataset.code = keyMap[key.textContent];
+            let index = key.textContent.indexOf('-');
+                if (index !== -1) {
+                    key.textContent = key.textContent.slice(0, index);
+                }
+        }
+    })
+// };

@@ -1,4 +1,7 @@
+import { keyArr } from './DOM'
+
 export const textArea = document.querySelector('.textarea');
+
 let cursorPosition = textArea.selectionStart;
 
 const keyboardArea = document.querySelector('.keyboard');
@@ -12,9 +15,8 @@ keyboardArea.addEventListener("mousedown", function(event) {
 });
 
 export function clicksHandler() {
-  let keyArr = document.querySelectorAll('.key'); //массив клавиш
   keyArr.forEach(key => {
-    key.addEventListener('mousedown', () => {
+    key.addEventListener('mousedown', (event) => {
       if (!key.classList.contains('key_service')) {
         textArea.textContent += key.textContent;
       } else {
@@ -26,6 +28,7 @@ export function clicksHandler() {
             textArea.textContent = textArea.textContent.substring(0, textArea.textContent.length-1);
             break;
           case 'tab':
+            event.preventDefault();
             textArea.innerHTML += '\t';
             break;
           case 'enter':
