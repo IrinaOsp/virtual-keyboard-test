@@ -5,5 +5,6 @@ import { textArea, clicksHandler } from './modules/clicksHandler.js';
 import { keyDown, keyUp } from './modules/keyPressHandler.js';
 import { capsHandler } from './modules/CapsLock.js';
 import { shiftHandler, realShiftHandler } from './modules/Shift.js';
+import { switchLang } from './modules/switchLang.js';
 
 clicksHandler();
