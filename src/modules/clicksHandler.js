@@ -1,4 +1,4 @@
-import { keyArr } from './DOM'
+import { keyArr } from './DOM.js';
 
 export const textArea = document.querySelector('.textarea');
 
@@ -6,18 +6,18 @@ let cursorPosition = textArea.selectionStart;
 
 const keyboardArea = document.querySelector('.keyboard');
 
-keyboardArea.addEventListener('mousedown', event => {
+keyboardArea.addEventListener('mousedown', (event) => {
   if (event.target !== textArea) {
     event.preventDefault();
     textArea.focus();
-    //moves coursor after clicks on virtual buttons
+    // moves coursor after clicks on virtual buttons
     textArea.selectionStart = cursorPosition - 1;
     textArea.selectionEnd = cursorPosition - 1;
   }
 });
 
 export function clicksHandler() {
-  keyArr.forEach(key => {
+  keyArr.forEach((key) => {
     key.addEventListener('mousedown', (event) => {
       if (!key.classList.contains('key_service')) {
         textArea.value += key.textContent;
@@ -27,7 +27,7 @@ export function clicksHandler() {
             textArea.value += ' ';
             break;
           case 'backspace':
-            textArea.value = textArea.value.substring(0, textArea.value.length-1);
+            textArea.value = textArea.value.substring(0, textArea.value.length - 1);
             break;
           case 'tab':
             textArea.value += '\t';
@@ -51,20 +51,21 @@ export function clicksHandler() {
               textArea.selectionEnd = cursorPosition - 1;
             }
             break;
-          case '⇒': //to be fixed
+          case '⇒': // to be fixed
             if (textArea.selectionStart < textArea.value.length) {
-              console.log(textArea.selectionStart)
+              console.log(textArea.selectionStart);
               cursorPosition = textArea.selectionStart;
               textArea.selectionStart = cursorPosition + 1;
               textArea.selectionEnd = cursorPosition + 1;
-              console.log(textArea.selectionStart)
+              console.log(textArea.selectionStart);
             }
             break;
           case '⇑':
             console.log('up')
             break;
           case '⇓':
-            console.log('down')
+            console.log('down');
+          default: break;
         }
       }
     });
