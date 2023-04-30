@@ -12,6 +12,7 @@ const KEYS_RU = [
 const language = document.querySelector('.language');
 
 export const switchLang = document.addEventListener('keydown', (event) => {
+  console.log('switchLang')
   if (event.ctrlKey && event.altKey && language.textContent === 'English') {
     document.querySelector('.language').textContent = 'Russian';
     keyArr.forEach((key, index) => {
@@ -24,3 +25,15 @@ export const switchLang = document.addEventListener('keydown', (event) => {
   })
 }
 });
+
+function setLocalStorage() {
+  localStorage.setItem('language', language.textContent);
+};
+window.addEventListener('beforeunload', setLocalStorage);
+
+function getLocalStorage() {
+  if (localStorage.getItem('language')) {
+      localStorage.getItem('language') === 'underfined' ? language.textContent = 'English' : language.textContent = localStorage.getItem('language');
+  }
+}
+window.addEventListener('load', getLocalStorage);
