@@ -59,7 +59,21 @@ body {
 .key:active,
 .active {
     background-color: #5DCDE3;
+    animation: hit 0.2s linear;
 }
+
+@keyframes hit {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+}
+
 .key_backspace {
     width: 80px;
 }
