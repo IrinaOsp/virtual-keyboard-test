@@ -1,10 +1,10 @@
 import './index.html';
 import './main.css';
-import { createLayout, getRows, keyArr } from './modules/DOM.js';
-import { textArea, clicksHandler } from './modules/clicksHandler.js';
-import { keyDown, keyUp } from './modules/keyPressHandler.js';
-import { capsHandler } from './modules/CapsLock.js';
-import { shiftHandler, realShiftHandler } from './modules/Shift.js';
-import { switchLang } from './modules/switchLang.js';
+import { createLayout, getRows, keyArr } from './modules/DOM';
+import { textArea, clicksHandler } from './modules/clicksHandler';
+import { keyDown, keyUp } from './modules/keyPressHandler';
+import { capsHandler } from './modules/CapsLock';
+import { shiftHandler } from './modules/Shift';
+import switchLang from './modules/switchLang';
 
 clicksHandler();

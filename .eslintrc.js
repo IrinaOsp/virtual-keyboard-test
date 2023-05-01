@@ -1,10 +1,14 @@
 module.exports = {
+  env: {
+    browser: true,
+    node: true,
+  },
   extends: [
     'eslint-config-airbnb-base',
   ],
   overrides: [
     {
-      files: ['*.js'],
+      files: ['src/modules/*.js'],
       rules: {
         'import/extensions': [
           'error',

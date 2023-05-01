@@ -7,74 +7,74 @@ export const KEYS_EN = [
 ];
 
 const keyMap = {
-    'a': 'KeyA',
-    'b': 'KeyB',
-    'c': 'KeyC',
-    'd': 'KeyD',
-    'e': 'KeyE',
-    'f': 'KeyF',
-    'g': 'KeyG',
-    'h': 'KeyH',
-    'i': 'KeyI',
-    'j': 'KeyJ',
-    'k': 'KeyK',
-    'l': 'KeyL',
-    'm': 'KeyM',
-    'n': 'KeyN',
-    'o': 'KeyO',
-    'p': 'KeyP',
-    'q': 'KeyQ',
-    'r': 'KeyR',
-    's': 'KeyS',
-    't': 'KeyT',
-    'u': 'KeyU',
-    'v': 'KeyV',
-    'w': 'KeyW',
-    'x': 'KeyX',
-    'y': 'KeyY',
-    'z': 'KeyZ',
-    '0': 'Digit0',
-    '1': 'Digit1',
-    '2': 'Digit2',
-    '3': 'Digit3',
-    '4': 'Digit4',
-    '5': 'Digit5',
-    '6': 'Digit6',
-    '7': 'Digit7',
-    '8': 'Digit8',
-    '9': 'Digit9',
-    'space': 'Space',
-    '`': 'Backquote',
-    'tab': 'Tab',
-    'enter': 'Enter',
-    'shift-l': 'ShiftLeft',
-    'shift-r': 'ShiftRight',
-    'ctrl-l': 'ControlLeft',
-    'ctrl-r': 'ControlRight',
-    'alt-l': 'AltLeft',
-    'alt-r': 'AltRight',
-    'caps lock': 'CapsLock',
-    'win': 'MetaLeft',
-    '⇑': 'ArrowUp',
-    '⇓': 'ArrowDown',
-    '⇐': 'ArrowLeft',
-    '⇒': 'ArrowRight',
-    'backspace': 'Backspace',
-    '-': 'Minus',
-    '=': 'Equal',
-    '[': 'BracketLeft',
-    ']': 'BracketRight',
-    ';': 'Semicolon',
-    '\'': 'Quote',
-    '\\': 'Backslash',
-    ',': 'Comma',
-    '.': 'Period',
-    '/': 'Slash'
-  };
+  a: 'KeyA',
+  b: 'KeyB',
+  c: 'KeyC',
+  d: 'KeyD',
+  e: 'KeyE',
+  f: 'KeyF',
+  g: 'KeyG',
+  h: 'KeyH',
+  i: 'KeyI',
+  j: 'KeyJ',
+  k: 'KeyK',
+  l: 'KeyL',
+  m: 'KeyM',
+  n: 'KeyN',
+  o: 'KeyO',
+  p: 'KeyP',
+  q: 'KeyQ',
+  r: 'KeyR',
+  s: 'KeyS',
+  t: 'KeyT',
+  u: 'KeyU',
+  v: 'KeyV',
+  w: 'KeyW',
+  x: 'KeyX',
+  y: 'KeyY',
+  z: 'KeyZ',
+  0: 'Digit0',
+  1: 'Digit1',
+  2: 'Digit2',
+  3: 'Digit3',
+  4: 'Digit4',
+  5: 'Digit5',
+  6: 'Digit6',
+  7: 'Digit7',
+  8: 'Digit8',
+  9: 'Digit9',
+  space: 'Space',
+  '`': 'Backquote',
+  tab: 'Tab',
+  enter: 'Enter',
+  'shift-l': 'ShiftLeft',
+  'shift-r': 'ShiftRight',
+  'ctrl-l': 'ControlLeft',
+  'ctrl-r': 'ControlRight',
+  'alt-l': 'AltLeft',
+  'alt-r': 'AltRight',
+  'caps lock': 'CapsLock',
+  win: 'MetaLeft',
+  '⇑': 'ArrowUp',
+  '⇓': 'ArrowDown',
+  '⇐': 'ArrowLeft',
+  '⇒': 'ArrowRight',
+  backspace: 'Backspace',
+  '-': 'Minus',
+  '=': 'Equal',
+  '[': 'BracketLeft',
+  ']': 'BracketRight',
+  ';': 'Semicolon',
+  '\'': 'Quote',
+  '\\': 'Backslash',
+  ',': 'Comma',
+  '.': 'Period',
+  '/': 'Slash',
+};
 
 let TEXTAREA = null;
 
-export const createLayout = (function () {
+export const createLayout = (function createLayout() {
   const INPUT_WRAPPER = document.createElement('div');
   INPUT_WRAPPER.className = 'wrapper wrapper_input';
 
@@ -157,17 +157,15 @@ export const getRows = function getKeys(keys) {
       document.querySelector('.row_2').appendChild(key);
     } else if (index < 53) {
       document.querySelector('.row_3').appendChild(key);
+    } else if (el === '⇑') {
+      const reserve = document.createElement('div');
+      reserve.classList.add('key_reserve');
+      document.querySelector('.row_4').appendChild(reserve);
+      reserve.appendChild(key);
+    } else if (el === '⇓') {
+      document.querySelector('.key_reserve').appendChild(key);
     } else {
-      if (el === '⇑') {
-        const reserve = document.createElement('div');
-        reserve.classList.add('key_reserve');
-        document.querySelector('.row_4').appendChild(reserve);
-        reserve.appendChild(key);
-      } else if (el === '⇓') {
-        document.querySelector('.key_reserve').appendChild(key);
-      } else {
-        document.querySelector('.row_4').appendChild(key);
-      }
+      document.querySelector('.row_4').appendChild(key);
     }
   });
 };
@@ -175,12 +173,16 @@ getRows(KEYS_EN);
 
 export const keyArr = document.querySelectorAll('.key');
 
-keyArr.forEach(key => {
-    if (keyMap[key.textContent]) {
-      key.dataset.code = keyMap[key.textContent];
-        let index = key.textContent.indexOf('-');
-          if (index !== -1 && key.textContent.length > 1) {
-            key.textContent = key.textContent.slice(0, index);
+for (let i = 0; i < keyArr.length; i += 1) {
+  if (keyMap[keyArr[i].textContent]) {
+    keyArr[i].dataset.code = keyMap[keyArr[i].textContent];
+    const index = keyArr[i].textContent.indexOf('-');
+    if (index !== -1 && keyArr[i].textContent.length > 1) {
+      const ind = KEYS_EN.indexOf(keyArr[i].textContent);
+      if (index !== -1) {
+        KEYS_EN[ind] = keyArr[i].textContent.slice(0, index);
       }
+      keyArr[i].textContent = keyArr[i].textContent.slice(0, index);
     }
-});
+  }
+}
